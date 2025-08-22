@@ -185,6 +185,11 @@ const sidebars = {
 		},
 		{
 			type: 'doc',
+			id: 'studio/localization',
+			label: "Localization (i18n)"
+		},
+		{
+			type: 'doc',
 			id: 'studio/settings',
 			label: "Settings"
 		},
@@ -534,13 +539,13 @@ const sidebars = {
 		},
 		'qodlyLookerStudio/qodlyLookerStudioConnector',
 		{
-			type: "link",
-			label: "Third-party Authentication",
-			href: "https://github.com/4d/4D-NetKit/tree/20R8#oauth2provider"
+			type: 'link',
+			label: 'OAuth 2.0',
+			href: 'https://github.com/4d/4D-NetKit/tree/20R8#oauth2provider'
 		}, 
 		{
 			type: 'category',
-			label: 'Email Integration',
+			label: 'Email',
 			items: [	
 				{
 					type: 'link',

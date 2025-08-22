@@ -146,7 +146,7 @@ Within the **Text Input** component, an embedded **Input** allows for further cu
                 :::
                 <Column.List align="center" justifyContent="between">
                         <Column.Item width="60%">
-                                <li><strong>date</strong>: Limits input to date values with a date picker.</li>
+                                <li><strong>date</strong>: Limits input to date values with a date picker. Users can navigate to the next or previous month, as well as jump to the next or previous year directly within the date picker.</li>
                         </Column.Item>
                         <Column.Item width="35%">
                                 <img src={require('./img/inputType_date.png').default} style={{borderRadius: '6px'}} />
@@ -199,6 +199,7 @@ Within the **Text Input** component, an embedded **Input** allows for further cu
                                 | `include` | `Boolean` | Defines whether the interval should include (`true`) or exclude (`false`) dates. |
                                 | `type` | `String` | Specifies the interval type. Possible values: **startingFrom, until, range, days**. |
                                 | `params` | `Object` | Contains details about the interval, such as specific dates or recurring patterns. |
+                                | `active` | `Boolean` | Whether the interval is active. Defaults to true. If false, the interval is ignored. This behaves exactly like the Card Toggle in the UI, which enables or disables the interval block without removing your settings. |
                                 <br/>
                                 #### **`params` Object Properties**  
                                 | **Interval Type** | **Parameters** | **Example JSON Format** |

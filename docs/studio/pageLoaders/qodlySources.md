@@ -76,13 +76,13 @@ The `Qodly` namespace  <img src={require('./img/Built-inSharedQodlyNamespace.png
 
 - Cannot be edited or deleted to ensure consistency and integrity across your application.
 
-- Provides ready-to-use datasources available to all application pages.
+- Provides ready-to-use qodlysources available to all application pages.
 
 
 
 ### Qodlysource: Location
 
-Within the **Qodly** namespace, you'll find the predefined datasource named **Location** <img src={require('./img/QodlysourceLocation.png').default} style={{borderRadius: '6px', width: '30%'}} />. 
+Within the **Qodly** namespace, you'll find the predefined qodlysource named **Location** <img src={require('./img/QodlysourceLocation.png').default} style={{borderRadius: '6px', width: '30%'}} />. 
 
 The Location qodlysource is specifically designed to facilitate handling URL-related data, making it simple to interact with different URL segments.
 
@@ -114,7 +114,90 @@ The Location qodlysource is specifically designed to facilitate handling URL-rel
   ```
 
 :::info Restrictions:
-The **Location** datasource is shared across your entire application and **cannot be edited or deleted**. This ensures uniform behavior and prevents accidental modifications.
+The **Location** qodlysource is shared across your entire application and **cannot be edited or deleted**. This ensures uniform behavior and prevents accidental modifications.
+:::
+
+### Qodlysource: UserLanguage
+
+Within the **Qodly** namespace, you'll find the predefined qodlysource named **UserLanguage** <img src={require('./img/QodlysourceUserLanguage.png').default} style={{borderRadius: '6px', width: '30%'}} />.
+
+The UserLanguage qodlysource is specifically designed to manage multilingual behavior within your application by storing the currently selected language and the list of available supported languages.
+
+It provides a seamless way to bind user-selected languages at runtime without requiring manual coding or session handling.
+
+#### Key Attributes of UserLanguage:
+
+- **selected** *(Object)*: Stores the currently active locale chosen by the user. This object contains information about the selected language.
+
+        **Structure:**
+        ```javascript
+        {
+           isocode: "en",
+           locale: "anglais",
+           native: "English"
+        }
+        ```
+
+        Each locale entry include:
+        - `isocode`: Standard two-letter language code (e.g., "en" for English).
+        - `locale`: Display name for the language.
+        - `native`: Native name for the language (as spoken in that locale).
+        
+        **Example:**
+        ```javascript
+        UserLanguage.selected // → { isocode: "fr", locale: "français", native: "Français" }
+        ```
+
+- **supported** (Array): Lists all the available supported locales that the user has created in the **Localization page**. Each entry in the array represents one locale and must follow the same structure as the `selected` object.
+
+        **Structure:**
+        ```javascript
+        [
+           {
+              isocode: "en",
+              locale: "anglais",
+              native: "English"
+           },
+           {
+              isocode: "de",
+              locale: "allemand",
+              native: "Deutsch"
+           }
+        ]
+        ```
+
+        **Example:**
+        ```javascript
+        UserLanguage.supported // → [
+        //    { isocode: "en", locale: "anglais", native: "English" },
+        //    { isocode: "es", locale: "espagnol", native: "Español" }
+        //   ]
+        ```
+
+:::info Restrictions:
+The **UserLanguage** qodlysource is shared across your entire application and **cannot be deleted or edited manually**.  
+
+To modify the list of supported languages (adding or removing locales), you must update the configuration from the [Localization page](../localization.md#accessing-the-localization-page).  
+Changes made in the Localization page will automatically be reflected in the `UserLanguage.supported` array.
+:::
+
+### Qodlysource: Title
+
+Within the Qodly namespace, you'll find the predefined qodlysource named Title.
+
+The Title qodlysource is specifically designed to control the browser tab title dynamically. By default, the browser tab title is derived from the name of the current Page. When the Qodly.Title qodlysource is defined, it overrides this behavior and sets the tab title based on its value.
+
+#### Key Behavior of Title:
+
+- **Override tab title**: When a value is set in Qodly.Title, it becomes the browser tab title, replacing the default Page-based title.
+
+- **Fallback behavior**: If Qodly.Title is not defined, the default behavior remains in place, and the tab title is derived from the Page name.
+
+
+:::info Restrictions:
+The **Title** qodlysource is shared across your entire application and **cannot be deleted or edited manually**.  
+
+It is of type String and its value is editable at runtime to allow dynamic updates to the tab title.
 :::
 
 
@@ -273,6 +356,24 @@ For Entity Selection or Entity types, make sure to also configure additional set
 	</Column.Item>
 </Column.List>
 
+
+<Column.List align="center" justifyContent="between">
+	<Column.Item width="35%">
+                If the value is long or complex, a <code>Maximize</code> button <img src={require('./img/maximizeQodlySourceEditor.png').default} style={{borderRadius: '6px', width:'10%'}} /> appears (only for object and array types), opening a popup editor to give you more editing space. 
+	</Column.Item>
+	<Column.Item width="60%">
+	        <img src={require('./img/popupEditor.png').default} style={{borderRadius: '6px'}} />
+	</Column.Item>
+</Column.List>
+
+<Column.List align="center" justifyContent="between">
+	<Column.Item width="35%">
+                The popup itself can also be maximized to cover the full contextual panel for better visibility.
+	</Column.Item>
+	<Column.Item width="60%">
+	        <img src={require('./img/popupEditor2.png').default} style={{borderRadius: '6px'}} />
+	</Column.Item>
+</Column.List>
 
 ### Renaming a Qodly Source
 
